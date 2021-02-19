@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createLogger from "redux-logger";
 import createSaga from "redux-saga";
+import cookie from "react-cookies";
 import rootSaga from "./sagas";
 import reducer from "./reducers";
 import { ICredentials } from "./storeTypes";
@@ -9,17 +10,34 @@ export interface Istore {
   credentials: ICredentials;
 }
 
+export const loadState = (): { name: string; token: string } =>
+  cookie.load("gamePlay")
+    ? cookie.load("gamePlay")
+    : {
+        name: "",
+        token: "",
+      };
+
+export const saveState = (state: Istore): void => {
+  cookie.save(
+    "gamePlay",
+    {
+      name: state.credentials.name,
+      token: state.credentials.token,
+    },
+    { path: "/" }
+  );
+};
+
 export const defaultStore: Istore = {
   credentials: {
-    name: "",
-    token: "",
+    name: loadState().name,
+    token: loadState().token,
     image: "",
     success: "",
     errors: "",
   },
 };
-
-export const saveState = (s: any): void => {};
 
 const configureStore = () => {
   const componseEnhancers = compose;
