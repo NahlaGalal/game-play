@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Befolk";
+  src: local("Befolk"), url("../fonts/Befolk.ttf");
+}
+
+@font-face {
+  font-family: "Segoe_bold";
+  src: local("Segoe UI Bold"), url("../fonts/Segoe\ UI\ Bold.ttf");
+}
+
+@font-face {
+  font-family: "Segoe";
+  src: local("Segoe UI"), url("../fonts/Segoe\ UI.ttf");
+}
+
+body {
+  margin: 0;
+  color: #FFF;
+  font-family: "Segoe";
+}
+
+a {
+  color: $white-color;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.logo {
+  font-family: "Befolk", sans-serif;
+}

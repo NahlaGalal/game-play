@@ -1,0 +1,143 @@
+.Register {
+  display: flex;
+  min-height: 100vh;
+  @media screen and (max-width: 514px) {
+    flex-wrap: wrap;
+  }
+
+  header {
+    flex-grow: 1;
+    background-color: $secondary-color;
+    padding: 24px;
+    display: grid;
+    grid-template-rows: auto 1fr 1fr;
+    max-width: 450px;
+
+    .logo {
+      display: block;
+      padding: 0 56px;
+      font-size: 24px;
+      span {
+        padding-left: 20px;
+        display: block;
+        &::first-letter {
+          color: $light-blue-color;
+        }
+      }
+    }
+
+    h1 {
+      align-self: flex-end;
+      font-size: 32px;
+      font-family: "Segoe_bold";
+      width: 180px;
+      margin: 0 auto;
+    }
+
+    nav {
+      width: max-content;
+      margin: 80px auto 0;
+      align-self: flex-start;
+
+      ul {
+        display: flex;
+
+        li {
+          padding-bottom: 4px;
+
+          &.active,
+          &:hover {
+            border-bottom: 1px solid $white-color;
+          }
+
+          &:first-of-type {
+            margin-right: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    flex-grow: 2;
+    background-color: $main-color;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+
+    form {
+      h2 {
+        font-size: 24px;
+        font-family: "Segoe_bold";
+      }
+
+      .upload_img {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 36px;
+
+        span {
+          display: block;
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          background-color: #ddd;
+          img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        label {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          font-family: "Segoe_bold";
+          background-color: $secondary-color;
+          border-radius: 50%;
+          text-align: center;
+          bottom: 0;
+          right: -6px;
+          cursor: pointer;
+        }
+      }
+
+      input {
+        box-sizing: border-box;
+        width: 188px;
+        height: 40px;
+        background-color: rgba($color: $secondary-color, $alpha: 0.46);
+        color: $white-color;
+        border: 0;
+        margin-bottom: 24px;
+        padding: 16px;
+        outline: 0.001px;
+        @media screen and (min-width: 325px) {
+          margin-right: 40px;
+        }
+        @media screen and (max-width: 555px) and (min-width: 514px) {
+          margin-right: 0;
+        }
+      }
+
+      .error {
+        color: $error-color;
+        margin: 0;
+        font-size: 12px;
+      }
+
+      button {
+        width: 64px;
+        height: 36px;
+        background-color: rgba($color: $white-color, $alpha: 0.46);
+        cursor: pointer;
+        border: 0;
+        outline: 0.001px;
+        margin-top: 24px;
+      }
+    }
+  }
+}
