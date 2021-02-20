@@ -1,0 +1,87 @@
+.Top-nav {
+  min-height: 120px;
+  background-color: $main-color;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    font-size: 56px;
+
+    span {
+      color: $light-blue-color;
+    }
+  }
+
+  ul {
+    display: flex;
+
+    li {
+      &:not(:last-of-type) {
+        margin-right: 24px;
+      }
+      &.active, &:hover {
+        border-bottom: 1px solid $white-color;
+      }
+    }
+  }
+
+  .search-input {
+    position: relative;
+
+    input {
+      height: 40px;
+      border-radius: 10px;
+      width: 380px;
+      padding: 0 8px;
+      border: 0;
+      outline: 0.001px;
+      font-size: 16px;
+      color: $main-color;
+
+      &::placeholder {
+        opacity: 0.46;
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .register-btns {
+    display: flex;
+
+    button {
+      background-color: $light-blue-color;
+      border-radius: 10px;
+      border: 0;
+      height: 40px;
+      padding: 0 8px;
+      font-size: 16px;
+
+      &.login-btn {
+        margin-right: 16px;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    font-family: "Segoe_bold";
+
+    img {
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      margin-right: 16px;
+    }
+  }
+}
