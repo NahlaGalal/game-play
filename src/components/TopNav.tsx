@@ -10,7 +10,7 @@ interface Props {
   activePage: "Home" | "Games" | "Download" | "About";
 }
 
-const TopHeader: React.FC<Props> = ({ isAuth, imgUrl, name, activePage }) => {
+const TopNav: React.FC<Props> = ({ isAuth, imgUrl, name, activePage }) => {
   return (
     <nav className="Top-nav">
       {/* Logo */}
@@ -61,4 +61,4 @@ const TopHeader: React.FC<Props> = ({ isAuth, imgUrl, name, activePage }) => {
   );
 };
 
-export default TopHeader;
+export default TopNav;
