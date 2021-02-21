@@ -6,7 +6,9 @@ export enum actionTypes {
   LOGIN_USER_SAGA = "LOGIN_USER_SAGA",
   LOGIN_USER = "LOGIN_USER",
   GET_ALL_GAMES_SAGA = "GET_ALL_GAMES_SAGA",
-  GET_ALL_GAMES = "GET_ALL_GAMES"
+  GET_ALL_GAMES = "GET_ALL_GAMES",
+  GET_CATEGORY_GAMES_SAGA = "GET_CATEGORY_GAMES_SAGA",
+  GET_CATEGORY_GAMES = "GET_CATEGORY_GAMES"
 }
 
 export interface SignupAction {
@@ -22,3 +24,9 @@ export interface loginAction {
 export interface getAllGamesAction {
   type: typeof actionTypes.GET_ALL_GAMES;
 }
+
+export interface getCategoryGamesAction {
+  type: typeof actionTypes.GET_CATEGORY_GAMES,
+  data: number
+}
+

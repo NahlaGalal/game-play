@@ -33,15 +33,28 @@ const credentials = (state: ICredentials, action: actionReducer) => {
 
 const gamesAPI = (state: IGamesAPI, action: actionReducer) => {
   switch (action.type) {
-    case actionTypes.GET_ALL_GAMES: 
+    case actionTypes.GET_ALL_GAMES:
       return {
         ...state,
         games: action.isFailed ? state.games : action.payload.games,
-        categories: action.isFailed ? state.categories : action.payload.categories,
-        errors: !action.isFailed ? state.errors : action.payload.message
-      }
+        categories: action.isFailed
+          ? state.categories
+          : action.payload.categories,
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
+    case actionTypes.GET_CATEGORY_GAMES:
+      return {
+        ...state,
+        categoryGames: action.isFailed
+          ? state.categoryGames
+          : action.payload.games,
+        categories: action.isFailed
+          ? state.categories
+          : action.payload.categories,
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
     default:
-      return {...state}
+      return { ...state };
   }
 };
 

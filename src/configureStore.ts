@@ -11,13 +11,13 @@ export interface Istore {
   gamesAPI: IGamesAPI;
 }
 
-export const loadState = (): { name: string; token: string, image: string } =>
+export const loadState = (): { name: string; token: string; image: string } =>
   cookie.load("gamePlay")
     ? cookie.load("gamePlay")
     : {
         name: "",
         token: "",
-        image: ""
+        image: "",
       };
 
 export const saveState = (state: Istore): void => {
@@ -26,7 +26,7 @@ export const saveState = (state: Istore): void => {
     {
       name: state.credentials.name,
       token: state.credentials.token,
-      image: state.credentials.image
+      image: state.credentials.image,
     },
     { path: "/" }
   );
@@ -48,6 +48,11 @@ export const defaultStore: Istore = {
       suggestions: [],
     },
     categories: [],
+    categoryGames: {
+      name: "",
+      games: [],
+      suggestions: [],
+    },
     errors: "",
   },
 };

@@ -51,6 +51,24 @@ export interface IGames {
   }[];
 }
 
+export interface ICategoryGames {
+  name: string;
+  games: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+  suggestions: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+}
+
 export interface IGamesAPI {
   games: IGames;
   categories: {
@@ -58,5 +76,6 @@ export interface IGamesAPI {
     name: string;
     image: string;
   }[];
+  categoryGames: ICategoryGames;
   errors: string;
 }
