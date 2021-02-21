@@ -16,6 +16,9 @@ interface Props {
   games: IGames;
   categories: { id: number; name: string; image: string }[];
   history: any;
+  token: string;
+  userName: string;
+  userImage: string;
 }
 
 const Home: React.FC<Props> = ({
@@ -28,6 +31,9 @@ const Home: React.FC<Props> = ({
   },
   categories = [],
   history,
+  userName,
+  token,
+  userImage
 }) => {
   
   useEffect(() => {
@@ -38,10 +44,10 @@ const Home: React.FC<Props> = ({
     <div className="Home">
       <header>
         <TopNav
-          isAuth={true}
+          isAuth={token ? true : false}
           activePage="Home"
-          name="Nahla Galal"
-          imgUrl="https://via.placeholder.com/64"
+          name={token ? userName : ""}
+          imgUrl={token ? userImage : ""}
         />
         <h1 className="logo">
           well <span>Played</span>
@@ -232,6 +238,9 @@ const Home: React.FC<Props> = ({
 const mapStateToProps = (state: Istore) => ({
   games: state.gamesAPI.games,
   categories: state.gamesAPI.categories,
+  token: state.credentials.token,
+  userName: state.credentials.name,
+  userImage: state.credentials.image
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

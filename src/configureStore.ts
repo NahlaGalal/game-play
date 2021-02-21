@@ -11,12 +11,13 @@ export interface Istore {
   gamesAPI: IGamesAPI;
 }
 
-export const loadState = (): { name: string; token: string } =>
+export const loadState = (): { name: string; token: string, image: string } =>
   cookie.load("gamePlay")
     ? cookie.load("gamePlay")
     : {
         name: "",
         token: "",
+        image: ""
       };
 
 export const saveState = (state: Istore): void => {
@@ -25,6 +26,7 @@ export const saveState = (state: Istore): void => {
     {
       name: state.credentials.name,
       token: state.credentials.token,
+      image: state.credentials.image
     },
     { path: "/" }
   );
@@ -34,7 +36,7 @@ export const defaultStore: Istore = {
   credentials: {
     name: loadState().name,
     token: loadState().token,
-    image: "",
+    image: loadState().image,
     success: "",
     errors: "",
   },
@@ -59,7 +61,7 @@ const configureStore = () => {
   }
   const store = createStore(
     reducer,
-    undefined,
+    defaultStore as any,
     componseEnhancers(applyMiddleware(...middlewares))
   );
   sagaMiddleware.run(rootSaga);
