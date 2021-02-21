@@ -19,3 +19,44 @@ export interface ICredentials {
   success: string;
   errors: string;
 }
+
+export interface IGames {
+  mobileGames: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+  pcGames: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+  mostDownloadedGames: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+  suggestions: {
+    id: number;
+    name: string;
+    color: string;
+    rating: number;
+    image: string;
+  }[];
+}
+
+export interface IGamesAPI {
+  games: IGames;
+  categories: {
+    id: number;
+    name: string;
+    image: string;
+  }[];
+  errors: string;
+}

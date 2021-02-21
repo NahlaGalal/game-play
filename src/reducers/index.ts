@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { actionTypes } from "../actions/types";
-import { ICredentials } from "../storeTypes";
+import { ICredentials, IGamesAPI } from "../storeTypes";
 
 interface actionReducer {
   type: string;
@@ -31,4 +31,18 @@ const credentials = (state: ICredentials, action: actionReducer) => {
   }
 };
 
-export default combineReducers({ credentials });
+const gamesAPI = (state: IGamesAPI, action: actionReducer) => {
+  switch (action.type) {
+    case actionTypes.GET_ALL_GAMES: 
+      return {
+        ...state,
+        games: action.isFailed ? state.games : action.payload.games,
+        categories: action.isFailed ? state.categories : action.payload.categories,
+        errors: !action.isFailed ? state.errors : action.payload.message
+      }
+    default:
+      return {...state}
+  }
+};
+
+export default combineReducers({ credentials, gamesAPI });

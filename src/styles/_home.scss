@@ -44,10 +44,10 @@
 
           .game {
             height: 255px;
-            background-image: url("../images/home-game.png");
             background-size: cover;
             border-radius: 20px;
             display: flex;
+            cursor: pointer;
 
             &:hover .game-info {
               opacity: 0;
@@ -73,6 +73,17 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-top: 4px;
+                position: relative;
+
+                .stars_full {
+                  position: absolute;
+                  left: 0;
+
+                  div {
+                    overflow: hidden;
+                    margin-top: 0;
+                  }
+                }
 
                 p {
                   font-size: 12px;
@@ -101,11 +112,11 @@
 
         .category {
           height: 56px;
-          background-image: url("../images/home-game.png");
           background-size: cover;
           margin-top: 40px;
           border-radius: 6px;
           display: flex;
+          cursor: pointer;
 
           p {
             height: 16px;
