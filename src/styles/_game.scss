@@ -1,0 +1,211 @@
+.Game {
+  background-color: $main-color;
+
+  main {
+    padding: 36px 8%;
+
+    > header {
+      background-color: rgba($color: $white-color, $alpha: 0.5);
+      border-top-left-radius: 60px;
+      border-bottom-left-radius: 60px;
+      display: grid;
+      grid-template-columns: 40% 1fr;
+      grid-template-rows: auto 1fr auto;
+      column-gap: 24px;
+
+      > img {
+        border-radius: 60px;
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        grid-row: 1/4;
+      }
+
+      h1 {
+        font-size: 48px;
+        font-family: "Segoe_bold";
+        text-align: center;
+        margin: 24px 0 16px;
+      }
+
+      p {
+        margin-right: 24px;
+      }
+
+      .rate-size {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        .rate {
+          display: flex;
+          position: relative;
+          align-items: center;
+
+          span {
+            position: relative;
+            width: 85px;
+            height: 85px;
+            background-color: $light-blue-color;
+            display: block;
+            font-family: "Segoe_bold";
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-right: 16px;
+
+            &::after {
+              content: "";
+              position: absolute;
+              width: 60px;
+              height: 60px;
+              border: 1px solid #707070;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              border-radius: 50%;
+            }
+          }
+
+          img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+          }
+
+          .stars_full {
+            position: absolute;
+            right: 0;
+          }
+        }
+
+        .size {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .video-game {
+      margin-top: 100px;
+      background-color: rgba($color: $white-color, $alpha: 0.5);
+      display: grid;
+      grid-template-columns: 60% 1fr;
+      grid-template-rows: auto 1fr;
+      column-gap: 24px;
+
+      > img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        grid-row: 1/3;
+      }
+
+      h2 {
+        margin: 24px;
+        text-align: center;
+        font-size: 32px;
+        font-family: "Segoe_bold";
+      }
+
+      p {
+        align-self: center;
+      }
+    }
+
+    .download-btn {
+      display: block;
+      background-color: $light-blue-color;
+      width: 400px;
+      height: 80px;
+      font-size: 16px;
+      font-family: "Segoe_bold";
+      border-radius: 10px;
+      margin: 40px auto 100px;
+      border: 0;
+      outline: 0.001px;
+    }
+
+    .opinions-section {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+
+        h2 {
+          font-family: "Segoe_bold";
+          font-size: 32px;
+        }
+
+        button {
+          background-color: $secondary-color;
+          border: 0;
+          height: 72px;
+          padding: 0 24px;
+          font-size: 16px;
+          font-family: "Segoe_bold";
+          border-radius: 12px;
+          color: $white-color;
+          cursor: pointer;
+        }
+      }
+
+      .opinion {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+
+        .user-image {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 16px;
+        }
+
+        .user-name {
+          font-size: 24px;
+          font-family: "Segoe_bold";
+        }
+
+        div {
+          width: 100%;
+          margin-top: 16px;
+          background-color: $secondary-color;
+          border-radius: 40px;
+          display: flex;
+          height: 280px;
+
+          .opinion-image {
+            width: 40%;
+            object-fit: cover;
+            border-radius: 40px;
+            margin-right: 40px;
+          }
+
+          p {
+            align-self: center;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    .suggestions {
+      margin-top: 100px;
+
+      h2 {
+        font-family: "Segoe_bold";
+        font-size: 24px;
+      }
+    }
+  }
+}

@@ -96,7 +96,7 @@ const Games: React.FC<Props> = ({
           </section>
           <section>
             <h2>Suggestions For You</h2>
-            <section>
+            <section className="games-section">
               {categoryGames.suggestions.map((game) => (
                 <div
                   className="game"
