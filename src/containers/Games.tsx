@@ -46,7 +46,7 @@ const Games: React.FC<Props> = ({
       <header>
         <TopNav
           isAuth={token ? true : false}
-          activePage="Home"
+          activePage="Games"
           name={token ? userName : ""}
           imgUrl={token ? userImage : ""}
         />

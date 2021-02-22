@@ -24,7 +24,7 @@ const TopNav: React.FC<Props> = ({ isAuth, imgUrl, name, activePage }) => {
           <Link to="/">Home</Link>
         </li>
         <li className={activePage === "Games" ? "active" : ""}>
-          <Link to="/games">Games</Link>
+          <Link to="/games/1">Games</Link>
         </li>
         <li className={activePage === "Download" ? "active" : ""}>
           <Link to="/download">Download</Link>
