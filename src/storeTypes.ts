@@ -104,3 +104,14 @@ export interface IGamesAPI {
   gameDetails: IGameDetails;
   errors: string;
 }
+
+export interface IDownloads {
+  success: boolean;
+  errors: string;
+  downloads: {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+  }[];
+}

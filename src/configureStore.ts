@@ -4,11 +4,12 @@ import createSaga from "redux-saga";
 import cookie from "react-cookies";
 import rootSaga from "./sagas";
 import reducer from "./reducers";
-import { ICredentials, IGamesAPI } from "./storeTypes";
+import { ICredentials, IDownloads, IGamesAPI } from "./storeTypes";
 
 export interface Istore {
   credentials: ICredentials;
   gamesAPI: IGamesAPI;
+  downloads: IDownloads;
 }
 
 export const loadState = (): { name: string; token: string; image: string } =>
@@ -67,9 +68,14 @@ export const defaultStore: Istore = {
         id: -1,
         name: "",
         preview: "",
-        video: ""
-      }
+        video: "",
+      },
     },
+    errors: "",
+  },
+  downloads: {
+    downloads: [],
+    success: false,
     errors: "",
   },
 };

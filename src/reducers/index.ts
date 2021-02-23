@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { actionTypes } from "../actions/types";
-import { ICredentials, IGamesAPI } from "../storeTypes";
+import { ICredentials, IDownloads, IGamesAPI } from "../storeTypes";
 
 interface actionReducer {
   type: string;
@@ -57,11 +57,35 @@ const gamesAPI = (state: IGamesAPI, action: actionReducer) => {
       return {
         ...state,
         gameDetails: action.isFailed ? state.gameDetails : action.payload,
-        errors: !action.isFailed ? state.errors : action.payload.message
-      }
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
     default:
       return { ...state };
   }
 };
 
-export default combineReducers({ credentials, gamesAPI });
+const downloads = (state: IDownloads, action: actionReducer) => {
+  switch (action.type) {
+    case actionTypes.POST_ADD_TO_DOWNLOADS:
+      return {
+        ...state,
+        success: action.isFailed ? state.success : action.payload.success,
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
+    case actionTypes.GET_DOWNLOADS:
+      return {
+        ...state,
+        downloads: action.isFailed ? state.downloads : [...action.payload],
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
+    case actionTypes.DELETE_FROM_DOWNLOADS:
+      return {
+        ...state,
+        errors: !action.isFailed ? state.errors : action.payload.message,
+      };
+    default:
+      return { ...state };
+  }
+};
+
+export default combineReducers({ credentials, gamesAPI, downloads });

@@ -14,7 +14,7 @@
     }
 
     section {
-      background-color: $main-color;
+      background-color: #17123B;
       padding: 40px 80px;
 
       .item {
@@ -38,10 +38,20 @@
           h2 {
             font-size: 16px;
             font-family: "Segoe_bold";
+            
+            a {
+              color: $white-color;
+            }
           }
 
-          p {
+          > p {
             font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            width: 80%;
           }
         }
 
@@ -50,7 +60,7 @@
           background-color: transparent;
           margin-right: 16px;
           cursor: pointer;
-          
+
           &.download-btn {
             margin-left: auto;
           }

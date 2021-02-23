@@ -10,7 +10,13 @@ export enum actionTypes {
   GET_CATEGORY_GAMES_SAGA = "GET_CATEGORY_GAMES_SAGA",
   GET_CATEGORY_GAMES = "GET_CATEGORY_GAMES",
   GET_GAME_DETAILS_SAGA = "GET_GAME_DETAILS_SAGA",
-  GET_GAME_DETAILS = "GET_GAME_DETAILS"
+  GET_GAME_DETAILS = "GET_GAME_DETAILS",
+  POST_ADD_TO_DOWNLOADS_SAGA = "POST_ADD_TO_DOWNLOADS_SAGA",
+  POST_ADD_TO_DOWNLOADS = "POST_ADD_TO_DOWNLOADS",
+  GET_DOWNLOADS_SAGA = "GET_DOWNLOADS_SAGA",
+  GET_DOWNLOADS = "GET_DOWNLOADS",
+  DELETE_FROM_DOWNLOADS_SAGA = "DELETE_FROM_DOWNLOADS_SAGA",
+  DELETE_FROM_DOWNLOADS = "DELETE_FROM_DOWNLOADS",
 }
 
 export interface SignupAction {
@@ -28,11 +34,24 @@ export interface getAllGamesAction {
 }
 
 export interface getCategoryGamesAction {
-  type: typeof actionTypes.GET_CATEGORY_GAMES_SAGA,
-  data: number
+  type: typeof actionTypes.GET_CATEGORY_GAMES_SAGA;
+  data: number;
 }
 
 export interface getGameDetailsAction {
-  type: typeof actionTypes.GET_GAME_DETAILS_SAGA,
-  data: number
+  type: typeof actionTypes.GET_GAME_DETAILS_SAGA;
+  data: number;
+}
+
+export interface IPostAddToDownloads {
+  type: typeof actionTypes.POST_ADD_TO_DOWNLOADS_SAGA;
+  data: {
+    gameId: number;
+    token: string;
+  };
+}
+
+export interface IGetDownloads {
+  type: typeof actionTypes.GET_DOWNLOADS_SAGA;
+  data: string;
 }

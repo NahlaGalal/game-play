@@ -18,6 +18,8 @@ interface Props {
   userName: string;
   userImage: string;
   history: any;
+  postAddToDownloads: (data: { gameId: number; token: string }) => void;
+  success: boolean;
 }
 
 const Game: React.FC<Props> = ({
@@ -27,12 +29,18 @@ const Game: React.FC<Props> = ({
   userImage,
   userName,
   history,
+  postAddToDownloads,
+  success,
 }) => {
   const gameId = (useParams() as any).id;
 
   useEffect(() => {
     getGameDetails(gameId);
   }, [getGameDetails, gameId]);
+
+  useEffect(() => {
+    if (success) history.push("/downloads");
+  }, [success, history]);
 
   return (
     <div className="Game">
@@ -81,7 +89,10 @@ const Game: React.FC<Props> = ({
             <p>{gameDetails.movie.name}</p>
           </section>
         )}
-        <button className="download-btn">
+        <button
+          className="download-btn"
+          onClick={() => postAddToDownloads({ gameId, token })}
+        >
           <Link to="/download">Download</Link>
         </button>
         <section className="opinions-section">
@@ -156,11 +167,14 @@ const mapStateToProps = (state: Istore) => ({
   token: state.credentials.token,
   userName: state.credentials.name,
   userImage: state.credentials.image,
+  success: state.downloads.success,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   getGameDetails: (data: number) =>
     dispatch({ type: actionTypes.GET_GAME_DETAILS_SAGA, data }),
+  postAddToDownloads: (data: { gameId: number; token: string }) =>
+    dispatch({ type: actionTypes.POST_ADD_TO_DOWNLOADS_SAGA, data }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
