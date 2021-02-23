@@ -1,40 +1,59 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { actionTypes } from "../actions/types";
 import Footer from "../components/Footer";
 import TopNav from "../components/TopNav";
+import { Istore } from "../configureStore";
 // Images
 import altImage from "../images/home-game.png";
 import starEmptyIcon from "../images/star-empty.svg";
 import starFullIcon from "../images/star-full.svg";
+import { IGameDetails } from "../storeTypes";
 
-interface Props {}
+interface Props {
+  getGameDetails: (data: number) => void;
+  gameDetails: IGameDetails;
+  token: string;
+  userName: string;
+  userImage: string;
+  history: any;
+}
 
-const Game = (props: Props) => {
+const Game: React.FC<Props> = ({
+  getGameDetails,
+  gameDetails,
+  token,
+  userImage,
+  userName,
+  history,
+}) => {
+  const gameId = (useParams() as any).id;
+
+  useEffect(() => {
+    getGameDetails(gameId);
+  }, [getGameDetails, gameId]);
+
   return (
     <div className="Game">
       <header>
         <TopNav
-          // isAuth={token ? true : false}
-          isAuth={false}
+          isAuth={token ? true : false}
           activePage="Games"
-          // name={token ? userName : ""}
-          // imgUrl={token ? userImage : ""}
+          name={token ? userName : ""}
+          imgUrl={token ? userImage : ""}
         />
       </header>
       <main>
         <header>
-          <img src={altImage} alt="Screenshot of game" />
-          <h1>Valorant</h1>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book
-          </p>
+          <img src={gameDetails.image} alt="Screenshot of game" />
+          <h1>{gameDetails.name}</h1>
+          <p
+            dangerouslySetInnerHTML={{ __html: gameDetails.description || "" }}
+          ></p>
           <div className="rate-size">
             <div className="rate">
-              <span>4.5</span>
+              <span>{gameDetails.rating}</span>
               <div className="stars_empty">
                 <img src={starEmptyIcon} alt="Star 1 Empty" />
                 <img src={starEmptyIcon} alt="Star 2 Empty" />
@@ -43,7 +62,7 @@ const Game = (props: Props) => {
                 <img src={starEmptyIcon} alt="Star 5 Empty" />
               </div>
               <div className="stars_full">
-                <div style={{}}>
+                <div style={{ width: `${gameDetails.rating * 20}%` }}>
                   <img src={starFullIcon} alt="Star 1 Full" />
                   <img src={starFullIcon} alt="Star 2 Full" />
                   <img src={starFullIcon} alt="Star 3 Full" />
@@ -55,16 +74,13 @@ const Game = (props: Props) => {
             <p className="size">1.5GB</p>
           </div>
         </header>
-        <section className="video-game">
-          <img src={altImage} alt="dd" />
-          <h2>Watch Video</h2>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
-            nam, quas sit, eligendi dolor odit inventore saepe delectus sunt
-            cumque magni. Suscipit necessitatibus porro veniam magni quidem
-            veritatis laboriosam dolor.
-          </p>
-        </section>
+        {gameDetails.movie.name && (
+          <section className="video-game">
+            <img src={gameDetails.movie.preview} alt="Preview of video game" />
+            <h2>Watch Video</h2>
+            <p>{gameDetails.movie.name}</p>
+          </section>
+        )}
         <button className="download-btn">
           <Link to="/download">Download</Link>
         </button>
@@ -94,7 +110,7 @@ const Game = (props: Props) => {
         <section className="suggestions">
           <h2>Suggestions For You</h2>
           <section className="games-section">
-            {/* {categoryGames.suggestions.map((game) => (
+            {gameDetails.suggestions.map((game) => (
               <div
                 className="game"
                 onClick={() => history.push(`/game/${game.id}`)}
@@ -126,7 +142,7 @@ const Game = (props: Props) => {
                   </div>
                 </div>
               </div>
-            ))} */}
+            ))}
           </section>
         </section>
       </main>
@@ -135,8 +151,16 @@ const Game = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({});
+const mapStateToProps = (state: Istore) => ({
+  gameDetails: state.gamesAPI.gameDetails,
+  token: state.credentials.token,
+  userName: state.credentials.name,
+  userImage: state.credentials.image,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch: any) => ({
+  getGameDetails: (data: number) =>
+    dispatch({ type: actionTypes.GET_GAME_DETAILS_SAGA, data }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

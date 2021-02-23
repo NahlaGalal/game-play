@@ -53,6 +53,23 @@ export const defaultStore: Istore = {
       games: [],
       suggestions: [],
     },
+    gameDetails: {
+      id: -1,
+      name: "",
+      description: "",
+      rating: -1,
+      image: "",
+      addImage: "",
+      color: "",
+      tags: [],
+      suggestions: [],
+      movie: {
+        id: -1,
+        name: "",
+        preview: "",
+        video: ""
+      }
+    },
     errors: "",
   },
 };

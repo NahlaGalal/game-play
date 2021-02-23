@@ -53,6 +53,12 @@ const gamesAPI = (state: IGamesAPI, action: actionReducer) => {
           : action.payload.categories,
         errors: !action.isFailed ? state.errors : action.payload.message,
       };
+    case actionTypes.GET_GAME_DETAILS:
+      return {
+        ...state,
+        gameDetails: action.isFailed ? state.gameDetails : action.payload,
+        errors: !action.isFailed ? state.errors : action.payload.message
+      }
     default:
       return { ...state };
   }
