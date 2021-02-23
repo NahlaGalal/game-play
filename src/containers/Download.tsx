@@ -67,7 +67,6 @@ const Download: React.FC<Props> = ({
               </button>
             </div>
           ))}
-          <p></p>
         </section>
       </main>
     </div>
