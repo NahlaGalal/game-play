@@ -116,6 +116,7 @@ function* getCategoryGames({ data }: getCategoryGamesAction) {
     );
     const games: ICategoryGames = {
       name: categoryName.data.name,
+      id: categoryName.data.id,
       games: categoryGames.data.results.map((game: any) => ({
         id: game.id,
         name: game.name,

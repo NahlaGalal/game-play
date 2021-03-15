@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import { css } from "@emotion/core";
 import TopNav from "../components/TopNav";
 import downloadIcon from "../images/download.svg";
 import deleteIcon from "../images/delete.svg";
@@ -19,6 +21,7 @@ interface Props {
     image: string;
   }[];
   deleteFromDownloads: (data: { gameId: number; token: string }) => void;
+  empty: boolean;
 }
 
 const Download: React.FC<Props> = ({
@@ -28,7 +31,13 @@ const Download: React.FC<Props> = ({
   downloads,
   getDownloads,
   deleteFromDownloads,
+  empty,
 }) => {
+  const override = css`
+    display: block;
+    margin: 0 auto 40px;
+  `;
+
   useEffect(() => {
     getDownloads(token);
   }, [getDownloads, token]);
@@ -47,26 +56,39 @@ const Download: React.FC<Props> = ({
       <main>
         <h1>BASKET</h1>
         <section>
-          {downloads.map((game) => (
-            <div className="item" key={game.id}>
-              <img src={game.image} alt="Screenshot of game" />
-              <div className="game-info">
-                <h2>
-                  <Link to={`/game/${game.id}`}>{game.name}</Link>
-                </h2>
-                <p dangerouslySetInnerHTML={{ __html: game.description }}></p>
+          <PacmanLoader
+            color="#34bfff"
+            loading={!empty && downloads.length === 0}
+            size={32}
+            margin={2}
+            css={override}
+          />
+          {!empty ? (
+            downloads.map((game) => (
+              <div className="item" key={game.id}>
+                <img src={game.image} alt="Screenshot of game" />
+                <div className="game-info">
+                  <h2>
+                    <Link to={`/game/${game.id}`}>{game.name}</Link>
+                  </h2>
+                  <p dangerouslySetInnerHTML={{ __html: game.description }}></p>
+                </div>
+                <button className="download-btn">
+                  <img src={downloadIcon} alt="Download game" />
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() =>
+                    deleteFromDownloads({ gameId: game.id, token })
+                  }
+                >
+                  <img src={deleteIcon} alt="Delete game" />
+                </button>
               </div>
-              <button className="download-btn">
-                <img src={downloadIcon} alt="Download game" />
-              </button>
-              <button
-                className="delete-btn"
-                onClick={() => deleteFromDownloads({ gameId: game.id, token })}
-              >
-                <img src={deleteIcon} alt="Delete game" />
-              </button>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="no-downloads">No downloads yet</p>
+          )}
         </section>
       </main>
     </div>
@@ -78,6 +100,7 @@ const mapStateToProps = (state: Istore) => ({
   userName: state.credentials.name,
   userImage: state.credentials.image,
   downloads: state.downloads.downloads,
+  empty: state.downloads.empty,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

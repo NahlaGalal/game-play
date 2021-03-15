@@ -71,6 +71,11 @@
           }
         }
       }
+
+      .no-downloads {
+        text-align: center;
+        color: $error-color;
+      }
     }
   }
 }

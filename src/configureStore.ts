@@ -51,6 +51,7 @@ export const defaultStore: Istore = {
     categories: [],
     categoryGames: {
       name: "",
+      id: -1,
       games: [],
       suggestions: [],
     },
@@ -77,6 +78,7 @@ export const defaultStore: Istore = {
     downloads: [],
     success: false,
     errors: "",
+    empty: false,
   },
 };
 

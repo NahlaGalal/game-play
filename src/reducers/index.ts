@@ -76,6 +76,7 @@ const downloads = (state: IDownloads, action: actionReducer) => {
       return {
         ...state,
         downloads: action.isFailed ? state.downloads : [...action.payload],
+        empty: action.isFailed ? state.empty : action.payload.length ? false : true,
         errors: !action.isFailed ? state.errors : action.payload.message,
       };
     case actionTypes.DELETE_FROM_DOWNLOADS:

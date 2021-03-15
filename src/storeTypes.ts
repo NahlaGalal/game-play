@@ -53,6 +53,7 @@ export interface IGames {
 
 export interface ICategoryGames {
   name: string;
+  id: number;
   games: {
     id: number;
     name: string;
@@ -108,6 +109,7 @@ export interface IGamesAPI {
 export interface IDownloads {
   success: boolean;
   errors: string;
+  empty: boolean;
   downloads: {
     id: number;
     name: string;
