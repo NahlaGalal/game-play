@@ -14,14 +14,20 @@
     }
 
     section {
-      background-color: #17123B;
-      padding: 40px 80px;
+      background-color: #17123b;
+      padding: 40px 24px;
+      @media screen and (min-width: 687px) {
+        padding: 40px 80px;
+      }
 
       .item {
         background-color: $secondary-color;
-        height: 64px;
-        display: flex;
-        align-items: center;
+        overflow: hidden;
+        @media screen and (min-width: 687px) {
+          display: flex;
+          align-items: center;
+          height: 64px;
+        }
 
         &:not(:last-of-type) {
           margin-bottom: 24px;
@@ -32,13 +38,24 @@
           height: 64px;
           object-fit: cover;
           margin-right: 16px;
+          @media screen and (max-width: 686px) {
+            height: 100px;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+          }
         }
 
         .game-info {
+          @media screen and (max-width: 686px) {
+            margin: 16px 0;
+            text-align: center;
+          }
+
           h2 {
             font-size: 16px;
             font-family: "Segoe_bold";
-            
+
             a {
               color: $white-color;
             }
@@ -52,22 +69,32 @@
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
             width: 80%;
+
+            @media screen and (max-width: 686px) {
+              margin: 0 auto;
+              -webkit-line-clamp: 3;
+            }
           }
         }
 
-        button {
-          border: 0;
-          background-color: transparent;
-          margin-right: 16px;
-          cursor: pointer;
-
-          &.download-btn {
-            margin-left: auto;
+        .game-btns {
+          margin-left: auto;
+          display: flex;
+          justify-content: center;
+          @media screen and (max-width: 686px) {
+            margin-bottom: 16px;
           }
 
-          img {
-            width: 16px;
-            height: 16px;
+          button {
+            border: 0;
+            background-color: transparent;
+            margin-right: 16px;
+            cursor: pointer;
+
+            img {
+              width: 16px;
+              height: 16px;
+            }
           }
         }
       }

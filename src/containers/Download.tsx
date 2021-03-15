@@ -73,17 +73,19 @@ const Download: React.FC<Props> = ({
                   </h2>
                   <p dangerouslySetInnerHTML={{ __html: game.description }}></p>
                 </div>
-                <button className="download-btn">
-                  <img src={downloadIcon} alt="Download game" />
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() =>
-                    deleteFromDownloads({ gameId: game.id, token })
-                  }
-                >
-                  <img src={deleteIcon} alt="Delete game" />
-                </button>
+                <div className="game-btns">
+                  <button className="download-btn">
+                    <img src={downloadIcon} alt="Download game" />
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() =>
+                      deleteFromDownloads({ gameId: game.id, token })
+                    }
+                  >
+                    <img src={deleteIcon} alt="Delete game" />
+                  </button>
+                </div>
               </div>
             ))
           ) : (
