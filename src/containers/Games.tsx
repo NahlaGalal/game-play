@@ -74,7 +74,7 @@ const Games: React.FC<Props> = ({
             <>
               <section>
                 <h2>{categoryGames.name} Games</h2>
-                <section>
+                <section className="games-section">
                   {categoryGames.games.map((game) => (
                     <div
                       className="game"

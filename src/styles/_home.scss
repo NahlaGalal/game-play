@@ -11,6 +11,9 @@
     h1 {
       font-size: 72px;
       margin: auto 10%;
+      @media screen and (max-width: 330px) {
+        font-size: 36px;
+      }
 
       span {
         display: block;
@@ -23,10 +26,12 @@
   }
 
   .container {
-    display: grid;
-    grid-template-columns: 1fr 112px;
     padding: 36px 8%;
     column-gap: 64px;
+    @media screen and (min-width: 490px) {
+      display: grid;
+      grid-template-columns: 1fr 112px;
+    }
 
     main {
       section {
@@ -34,63 +39,6 @@
           font-size: 32px;
           margin-bottom: 24px;
           font-family: "Segoe_bold";
-        }
-
-        section {
-          margin-bottom: 36px;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          grid-gap: 24px;
-
-          .game {
-            height: 255px;
-            background-size: cover;
-            border-radius: 20px;
-            display: flex;
-            cursor: pointer;
-
-            &:hover .game-info {
-              opacity: 0;
-            }
-
-            .game-info {
-              box-sizing: border-box;
-              margin-top: auto;
-              background-color: rgba($color: $light-blue-color, $alpha: 0.54);
-              border: 1px solid #707070;
-              width: 100%;
-              border-bottom-left-radius: 20px;
-              border-bottom-right-radius: 20px;
-              padding: 8px;
-              transition: all 0.4s ease-in-out;
-
-              p {
-                font-family: "Segoe_bold";
-              }
-
-              div {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 4px;
-                position: relative;
-
-                .stars_full {
-                  position: absolute;
-                  left: 0;
-
-                  div {
-                    overflow: hidden;
-                    margin-top: 0;
-                  }
-                }
-
-                p {
-                  font-size: 12px;
-                }
-              }
-            }
-          }
         }
 
         > a {

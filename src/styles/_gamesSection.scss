@@ -1,8 +1,16 @@
 .games-section {
   margin-bottom: 36px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 24px;
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (min-width: 687px) and (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 686px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   .game {
     height: 255px;

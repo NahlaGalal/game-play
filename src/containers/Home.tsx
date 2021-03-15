@@ -73,7 +73,7 @@ const Home: React.FC<Props> = ({
             <>
               <section>
                 <h2>Mobile Games</h2>
-                <section>
+                <section className="games-section">
                   {games.mobileGames.map((game) => (
                     <div
                       className="game"
@@ -112,7 +112,7 @@ const Home: React.FC<Props> = ({
               </section>
               <section>
                 <h2>PC Games</h2>
-                <section>
+                <section className="games-section">
                   {games.pcGames.map((game) => (
                     <div
                       className="game"
@@ -151,7 +151,7 @@ const Home: React.FC<Props> = ({
               </section>
               <section>
                 <h2>Most Downloaded Games</h2>
-                <section>
+                <section className="games-section">
                   {games.mostDownloadedGames.map((game) => (
                     <div
                       className="game"
