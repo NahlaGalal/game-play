@@ -58,38 +58,44 @@ const Download: React.FC<Props> = ({
         <section>
           <PacmanLoader
             color="#34bfff"
-            loading={!empty && downloads.length === 0}
+            loading={token !== "" && !empty && downloads.length === 0}
             size={32}
             margin={2}
             css={override}
           />
-          {!empty ? (
-            downloads.map((game) => (
-              <div className="item" key={game.id}>
-                <img src={game.image} alt="Screenshot of game" />
-                <div className="game-info">
-                  <h2>
-                    <Link to={`/game/${game.id}`}>{game.name}</Link>
-                  </h2>
-                  <p dangerouslySetInnerHTML={{ __html: game.description }}></p>
+          {token ? (
+            !empty ? (
+              downloads.map((game) => (
+                <div className="item" key={game.id}>
+                  <img src={game.image} alt="Screenshot of game" />
+                  <div className="game-info">
+                    <h2>
+                      <Link to={`/game/${game.id}`}>{game.name}</Link>
+                    </h2>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: game.description }}
+                    ></p>
+                  </div>
+                  <div className="game-btns">
+                    <button className="download-btn">
+                      <img src={downloadIcon} alt="Download game" />
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() =>
+                        deleteFromDownloads({ gameId: game.id, token })
+                      }
+                    >
+                      <img src={deleteIcon} alt="Delete game" />
+                    </button>
+                  </div>
                 </div>
-                <div className="game-btns">
-                  <button className="download-btn">
-                    <img src={downloadIcon} alt="Download game" />
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() =>
-                      deleteFromDownloads({ gameId: game.id, token })
-                    }
-                  >
-                    <img src={deleteIcon} alt="Delete game" />
-                  </button>
-                </div>
-              </div>
-            ))
+              ))
+            ) : (
+              <p className="no-downloads">No downloads yet</p>
+            )
           ) : (
-            <p className="no-downloads">No downloads yet</p>
+            <p className="no-downloads">You must login first</p>
           )}
         </section>
       </main>
