@@ -14,44 +14,110 @@
     }
   }
 
-  ul {
-    display: flex;
+  .hamburger-menu {
+    margin: 0 16px;
+    order: 2;
+    cursor: pointer;
 
-    li {
+    @media screen and (min-width: 892px) {
+      display: none;
+    }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: $white-color;
+
       &:not(:last-of-type) {
-        margin-right: 24px;
-      }
-      &.active, &:hover {
-        border-bottom: 1px solid $white-color;
+        margin-bottom: 4px;
       }
     }
   }
 
-  .search-input {
-    position: relative;
+  input[type="checkbox"] {
+    display: none;
 
-    input {
-      height: 40px;
-      border-radius: 10px;
-      width: 380px;
-      padding: 0 8px;
-      border: 0;
-      outline: 0.001px;
-      font-size: 16px;
-      color: $main-color;
+    &:checked + .drop-down {
+      transform: translateY(0);
+    }
+  }
 
-      &::placeholder {
-        opacity: 0.46;
+  .drop-down {
+    display: contents;
+
+    ul {
+      display: flex;
+  
+      li {
+        &:not(:last-of-type) {
+          margin-right: 24px;
+        }
+        &.active, &:hover {
+          border-bottom: 1px solid $white-color;
+        }
+      }
+    }
+  
+    .search-input {
+      position: relative;
+  
+      input {
+        height: 40px;
+        border-radius: 10px;
+        width: 380px;
+        padding: 0 8px;
+        border: 0;
+        outline: 0.001px;
+        font-size: 16px;
+        color: $main-color;
+  
+        @media screen and (max-width: 1192px) {
+          width: 200px;
+        }
+  
+        &::placeholder {
+          opacity: 0.46;
+        }
+      }
+  
+      img {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 
-    img {
+    @media screen and (max-width: 891px) {
+      display: block;
+      transform: translateY(-1000px);
       position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 120px;
+      left: 0;
+      background-color: rgba($color: $main-color, $alpha: 0.7);
+      width: calc(100% - 32px);
+      padding: 16px;
+      transition: all 0.3s ease-in-out;
+
+      ul {
+        display: block;
+
+        li {
+          width: max-content;
+          margin-bottom: 8px;
+        }
+      }
+
+      .search-input {
+        img {
+          right: unset;
+          left: 184px;
+        }
+      }
     }
   }
+
 
   .register-btns {
     display: flex;

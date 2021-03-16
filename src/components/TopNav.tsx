@@ -18,26 +18,35 @@ const TopNav: React.FC<Props> = ({ isAuth, imgUrl, name, activePage }) => {
         w<span>p</span>
       </Link>
 
-      {/* Nav links */}
-      <ul>
-        <li className={activePage === "Home" ? "active" : ""}>
-          <Link to="/">Home</Link>
-        </li>
-        <li className={activePage === "Games" ? "active" : ""}>
-          <Link to="/games/1">Games</Link>
-        </li>
-        <li className={activePage === "Download" ? "active" : ""}>
-          <Link to="/download">Download</Link>
-        </li>
-        <li className={activePage === "About" ? "active" : ""}>
-          <Link to="/about">About Us</Link>
-        </li>
-      </ul>
+      <label className="hamburger-menu" htmlFor="drop-down">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <input type="checkbox" name="drop-down" id="drop-down" />
 
-      {/* Search input */}
-      <div className="search-input">
-        <input type="text" name="search" id="search" placeholder="Search" />
-        <img src={searchIcon} alt="Search icon" />
+      <div className="drop-down">
+        {/* Nav links */}
+        <ul>
+          <li className={activePage === "Home" ? "active" : ""}>
+            <Link to="/">Home</Link>
+          </li>
+          <li className={activePage === "Games" ? "active" : ""}>
+            <Link to="/games/1">Games</Link>
+          </li>
+          <li className={activePage === "Download" ? "active" : ""}>
+            <Link to="/download">Download</Link>
+          </li>
+          <li className={activePage === "About" ? "active" : ""}>
+            <Link to="/about">About Us</Link>
+          </li>
+        </ul>
+
+        {/* Search input */}
+        <div className="search-input">
+          <input type="text" name="search" id="search" placeholder="Search" />
+          <img src={searchIcon} alt="Search icon" />
+        </div>
       </div>
 
       {!isAuth ? (
