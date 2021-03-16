@@ -1,4 +1,4 @@
-# Game Play
+# Well Played
 
 This project uses [RAWG API](https://rawg.io/apidocs) to get games and categories
 It shows the most famous mobile games, pc games and most downloaded games
